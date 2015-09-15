@@ -1,2 +1,2 @@
 # quickdoc
-Quick web page editor (HTML+Javascript)
+Quick web page editor
