@@ -1,18 +1,17 @@
-body {color:#222; font-weight: 100; background: #FFF; font-family: Helvetica, sans-serif;}
+body {color:#123; font-weight: 100; background: #123; font-family: Helvetica, sans-serif;}
 b {font-weight: 800;}
 p {margin:15px 0;}
-h1 {font-weight: 900; font-size: 8em; margin:0 0 10px 0; padding: 0; color:#560;}
-h1 b {font-weight: 900; font-size: .5em; color:#DF9; position: absolute; margin: 35px 0 0 90px; text-shadow: 0 0 30px #999;}
+h1 {font-weight: 900; font-size: 5.7em; margin:-10px 0 10px 150px; padding: 0; color:#560;}
+h1 b {font-weight: 900; font-size: .5em; color:#DF9; position: absolute; margin: 27px 0 0 60px; text-shadow: 0 0 30px #999;}
 h2 {font-size: 2.5em;}
 h3 {font-size: 1.3em;}
 h2, h3, h4, h5, h6 {color:#000; margin:20px 0 10px 0;}
 li {padding: 3px 0 3px 20px; color:#354; font-style: italic;}
 
-table{width: auto;}
-th {font-weight: 100; color:#999;}
+table {width: auto;}
 td {font-size:1.1em;border-bottom: 1px solid #DDD; border-right: 1px solid #DDD;}
 td:first-child {border-left: 1px solid #DDD;}
-tr th { color:#FFF; background: #999; border-bottom: 2px solid #000;}
+tr th {font-weight: 100; color:#DF9; background: #345; border-bottom: 2px solid #000;}
 td *{margin:0; padding: 0;}
 table {border-top:1px solid #DDD;}
 
@@ -22,18 +21,91 @@ blockquote::after {margin: -10px 0 0 0;}
 img { width: 100%; float: left;}
 
 figure {clear:both; display: inline; float:left; margin:10px 0; background: #000; width: 100%;}
-figure legend {float:left; width: auto; margin-bottom: 10px; background: #000; padding:5px; font-size: .75em; color:#999; font-style: italic;}
+figure legend {float:left; width: auto; margin-bottom: 10px; background: #000; padding:5px; font-size: .75em; color:#DF9; font-style: italic;}
 
 
-.container {margin:0 auto 30px auto; padding: 5px; min-width: 400px;}
-
+.container {margin:0 auto; padding: 5px; min-width: 400px;}
 .container h2 {display:inline-block;}
 
-.txted, .preview {float: left; padding: 5px; margin:0; width: 50%; min-width: 350px; border:1px solid #DDD;}
-.txted {width: 25%; margin-right: 10px;}
+.menu {position: fixed; top: -165px; left: -220px; background: #FFF; z-index: 3000; padding: 5px 0 5px 5px;  min-width: 40px; min-height: 40px; background: transparent url(../img/g.png) right bottom no-repeat; transition: scale .5s;}
+.menu:hover > li,
+.menu:hover li a,
+.menu.focus > li,
+.menu.focus li a {opacity: 1; transition: opacity .3s;}
+.menu:hover,
+.menu.focus {left:0; top:0; transform: scale(1,1); margin: 10px 0 0 10px; border:1px solid #DDD; box-shadow: 2px 2px 5px #666; background: #FFF;}
+
+.menu li { opacity: 0; z-index: -10; min-width: 230px; color:#345; cursor: pointer; list-style: none; padding: 5px 20px; margin:0 -1px 0 -6px;}
+.menu li a { text-decoration: none; color:#345;}
+.menu li:hover,
+.menu li:active,
+.menu li:hover a,
+.menu li:active a { background: #09F; color:#FFF;}
+.menu li.barra { border-bottom: 1px solid #DDD;}
+.menu li.disabled { color: #CCC; cursor: default;}
+.menu li.barra:hover,
+.menu li.disabled:hover {background: #FFF;}
+.menu li span { float:right; display:inline-block; color:#AAA; font-size: .8em; margin: 3px 0 0 50px;}
+
+.txted,
+.preview {transition:.6s; position:fixed; border:10px solid #567; border-radius: 10px; background: #567; padding: 0;}
+.txted .titulo,
+.preview .titulo {position: absolute; margin: -33px 0 0 -10px; padding: 10px 20px 10px 20px; background: #567; color:#ABC; display: block; text-align: right; font-size: .9em; cursor: pointer; z-index: 3000; border-top-left-radius:10px; border-top-right-radius:10px;}
+
+.txted {left:10px; top:120px; bottom: 30px; width: 80%; min-width: 300px; max-width: 600px; z-index: 2;}
+.preview {left:60px; top:80px; bottom: 10px; min-width: 300px; right: 10px; z-index: 1;}
+
+.txted:active,
+.txted:hover,
+.txted.focus,
+.preview:active,
+.preview:hover,
+.preview.focus {z-index: 2000; box-shadow: 0 0 50px #012;}
+.focus .titulo {color:#DF9;}
 
 .txted textarea,
-.preview div { display:block;  min-height: 400px; width: 100%; margin:0; padding:0; overflow: auto; border:none;}
+.preview div {position:absolute; display:block; height: 100%; width: 96%; margin:0; padding: 0% 2%; overflow: auto; border:none; z-index: 1; border-radius: 10px; background: #FFF;}
+
+/* MEDIA QUERY */
+@media only screen and (min-width:1200px){
+    .preview {left:620px}
+}
+@media only screen and (max-width:140px){
+    *{transition:.4s;}
+    html {font-size:90%;}
+    body {background: #130; color: #DDD; transition: 2s;}
+    h1 {margin: -1% 0 10px 30%;}
+
+    td,
+    th {border:1px solid #232;}
+    td:first-child {border-left: 1px solid #232;}
+    table {border-top:1px solid #232;}
+
+    .container {padding: 0;}
+
+    .txted,
+    .txted textarea,
+    .preview,
+    .preview div {background: #343; color:#CCC; border-radius: 0;}
+
+    .txted {left:40px; top:80px; right: 0; border:2px solid #020; width: 90%;}
+    .preview {left:0; top:110px; right: 0; border:2px solid #020; width: 98%;}
+
+    .txted *,
+    .txted textarea *,
+    .preview *,
+    .preview div * {color:#DDD;}
+
+    .txted .titulo,
+    .preview .titulo { background: #252; margin: -28px 0 0 0;}
+
+    .txted:active,
+    .txted:hover,
+    .preview:active,
+    .preview:hover {box-shadow: 0 0 50px #000; border:2px solid #000;}
+
+    .preview {left:10px; right: 5px;}
+}
 
 
 
