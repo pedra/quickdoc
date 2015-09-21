@@ -2,141 +2,204 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="description" content="">
+        <meta name="description" content="Quickdoc editor">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Untitled</title>
+        <title>Quickdoc</title>
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/qed.css">
-        <link rel="author" href="humans.txt">
+        <script src="js/jszip.js"></script>
+        <script src="js/qed.js"></script>
+        <!-- <link rel="stylesheet" href="css/all.css">
+        <script src="js/all.js"></script> -->
+        <link rel="shortcut icon" href="./favicon.ico">
     </head>
     <body>
-
         <div class="container">
-
+            <ul id="menu" class="menu">
+                <li><a href="http://github.com/pedra/quickdoc" target="blanc">Ajuda<span>Ctrl+3</span></a></li>
+                <li class="barra"> </li>
+                <li id="reload">Recarregar a página<span>Ctrl+4</span></li>
+                <li class="disabled">Salvar <b>Quickdoc</b><span>Ctrl+5</span></li>
+                <li class="disabled">Carregar<span>Ctrl+6</span></li>
+                <li class="disabled">Novo<span>Ctrl+7</span></li>
+                <li class="barra"> </li>
+                <li><a href="http://github.com/pedra/quickdoc" target="blanc">Sobre <b>Quickdoc</b><span>Ctrl+8</span></a></li>
+                <li><a href="http://github.com/pedra/quickdoc" target="blanc">Colaboradores<span>Ctrl+9</span></a></li>
+            </ul>
             <h1>Qu<b>doc!</b>ick</h1>
+            <div class="txted" id="c1">
+                <h3 class="titulo" id="t1">EDITOR</h3>
+                <textarea id="txt">#Quickdoc Editor
+Este é o *Quickdoc*, um editor especialmente simples que foi criado s|às pressas|s durante o desenvolvimento do site lnk|http://meu.jor.br/||*meu*jornal|lnk - _um publicador de notícias em forma de rede social_.
 
-            <div class="txted">
-                <h2>Editor</h2>
-                <textarea id="txt">
-#Quickdoc Editor
-+Este é o *(Quickdoc)*, um editor especialmente simples que foi criado às pressas durante o desenvolvimento do site [link]http://meu.jor.br/||*(meu)*jornal
- - _(um publicador de notícias em forma de rede social)_.
+A principal vantagem é a "*distraction free*", onde o editor se concentra somente no teclado, ficando livre para criar seus textos sem ter que se preocupar em pegar no mouse, clicar em botões, formatações, etc.
 
-+A principal vantagem é a "*(distraction free)*", onde o editor se concentra somente no teclado, ficando livre para criar seus textos sem ter que se preocupar em pegar no mouse, clicar em botões, formatações, etc.
+O software está em desenvolvimento no lnk|http://github.com/pedra/quickdoc||GitHub|lnk em sua fase inicial, porém, já é possível utilizá-lo em pequenos trabalhos (como este texto) onde não se exija formatações avançadas.
 
-+O software está em desenvolvimento no [link]http://github.com/pedra/quickdoc||GitHub
- em sua fase inicial, porém, já é possível utilizá-lo em pequenos trabalhos (como este texto) onde não se exija formatações avançadas.
+O *Quickdoc* oferece duas formas de salvar a edição:
 
-+Um apelo é feito aos desenvolvedores que usam a *(linguagem Javascript)* e que tenham interesse em rechear seus currículos com trabalhos _(open source)_, para se juntarem a equipe de desenvolvedores deste software. Com isso todos ganhamos um excelente software utilitário, open source (livre) e de fácil adaptação em projetos web.
+lst|
+Salvando localmente em um *único arquivo compactado* (JSZip) com a extenção *'.qdoc'*, contendo o HTML, CSS (folhas de estilo), javascript (incluindo o código do *Quickdoc*), imagens e demais arquivos.
 
-+O *(Quickdoc)* oferece duas formas de salvar a edição:
+Enviando o arquivo gerado no formato acima, usando *AJAX*, para um servidor que poderá publicá-lo em algum site da web.
+|lst
 
-** Salvando localmente em um *(único arquivo compactado)* (JSZip) com a extenção *('.qdoc')*, contendo o HTML, CSS (folhas de estilo), javascript (incluindo o código do *(Quickdoc)*), imagens e demais arquivos.
-
-** Enviando o arquivo gerado no formato acima, usando *(AJAX)*, para um servidor que poderá publicá-lo em algum site da web.
-
-+O arquivo neste formato poderá ser baixado de algum site, re-editado e enviado de volta para publicação.
+O arquivo neste formato poderá ser baixado de algum site, re-editado e enviado de volta para publicação.
 
 #Até Onde Fomos!
 
-+O *(Quickdoc)* ainda está no início - bem próximo da idéia inicial!
-+Quase nada foi desenvolvido e testado, mas, já é possível utilizá-lo em pequena escala.
+O *Quickdoc* ainda está no início - bem próximo da idéia inicial!
+Quase nada foi desenvolvido e testado, mas, já é possível utilizá-lo em pequena escala.
 
-+Na sequência vamos ver o que já está funcionando.
+Alguns comandos de formatação devem ser seguidos pelo caractere "|" (barra vertical), com a seguinte sintaxe:
+sintaxe: *comando*| conteúdo [ || _atributos_ ] |*comando*
+
+Duas barras verticais serão usadas opcionalmente (entre colchetes acima) para adicionar atributos em determinados comandos de formatação.
+
+Durante os exemplos seguintes não será mostrado o comando com as barras verticais, pois, seriam interpletados pelo *quickdoc* como comandos reais e, conseqüentemente, substituídos e não exibidos. Um sinal " + " indica onde deverá ser inserida (digitada) a barra vertical (|).
+
+Os comandos de formatação ' * ', ' _ ' e ' # ' são excessões e não precisam das barras verticais.
 
 ##Usando Tabelas
-+Se você precisa exibir dados em uma tabela isso é muito facilitado com a seguinte sintaxe (_(veja o quadro "Editor")_):
+Se você precisa exibir dados em uma tabela isso é muito facilitado com a seguinte sintaxe (_veja o quadro "Editor"_):
 
-table(
-Produto
-Marca
-Quantidade
-Val. Unitário
-Val. Total
+tbl|
+Comando
+Sintaxe
+Resultado
 
-Leite Condensado
-Moça/Nestlê
-3
-3,99
-11,87
+*
+** frase de exemplo **
+Coloca o conteúdo em negrito.
 
-Macarrão Talharim
-Piraquê
-2
-4,80
--(7,60)- *(9,60)*
+_
+__ frase de exemplo __
+Coloca o conteúdo em itálico.
 
-Achocolatado
-Nescal
-1
-8,99
-8,99
-)table
+s
+ss|+ frase de exemplo +|ss
+O conteúdo fica riscado; deletado.
 
-+Até o momento, o *(Quickdoc)* somente trabalha com tabelas simples, sem funções ou formatações de templates (financeiro, lista, etc). É apenas para a exibição de dados simples.
+#
+# frase de exemplo
+No início de um parágrafo, torna o conteúdo em título 1.
 
-+Para o futuro, se prevê uma *(API)* de integração com servidores que forneca dodos dinâmicos. Templates e funções também estão previstas para uma futura versão.
+##
+## frase de exemplo
+No início de um parágrafo, torna o conteúdo em título 2.
+
+###
+### frase de exemplo
+No início de um parágrafo, torna o conteúdo em título 3.
+
+""
+'''' frase de exemplo ''''
+Entre as duas aspas *duplas*, o texto fica com destaque especial (<blokquote>).
+
+lnk
+lnk+ Url || Texto +lnk
+Transforma *Url * em hipperlink e [opcional] *Texto* no texto que será mostrado no lugar da url.
+
+img
+img+ Url || Legenda +img
+Mostra a imagem indicado pela *Url* e [opcional] mostra a *Legenda* indicada na sequencia.
+
+lst
+lst+ Parágrafos +lst
+Os parágrafos contidos entre as tags "lst" se tornam um itém da lista. A tag deve estar em uma linha única.
+
+tbl
+tbl+ parágrafos +tbl
+Os parágrafos entre esta tag se tornam colunas da tabela. A primeira 'linha' é o cabeçalho e, pulando duas linhas, se começa outra linha da tabela.
+|tbl
+
+Outro exemplo de tabela simples, *sem cabeçalho*, bastando adicionar uma linha em branco no *início da tabela*.
+tbl|
+
+L 1 / C 1
+L 1 / *C 2*
+L 1 / C 3
+L 1 / *C 4*
+L 1 / C 5
+
+L 2 / *C 1*
+L 2 / C 2
+L 2 / *C 3*
+L 2 / C 4
+L 2 / *C 5*
+
+L 3 / C 1
+L 3 / *C 2*
+L 3 / C 3
+L 3 / *C 4*
+L 3 / C 5
+
+L 4 / *C 1*
+L 4 / C 2
+L 4 / *C 3*
+L 4 / C 4
+L 4 / *C 5*
+|tbl
+
+Até o momento, o *Quickdoc* somente trabalha com tabelas simples, sem funções ou formatações de templates (financeiro, lista, etc). É apenas para a exibição de dados simples.
+
+Para o futuro, se prevê uma *API* de integração com servidores que forneca dodos dinâmicos. Templates e funções também estão previstas para uma futura versão.
 
 ##Texto em Destaque
 
-+Textos em destaque começam com duas aspas duplas (" ") em sequência, terminando a linha com uma nova linha.
+Textos em destaque começam com duas aspas duplas (""), em sequência e terminando a linha com a mesma sequência de aspas duplas.
 
-""Destaque de trechos no texto começam com duas aspas duplas ("") em sequência, terminando a linha com uma nova linha.
+""Destaque de trechos no texto começam com aspas duplas e barra em sequência, terminando a linha com a mesma sequência invertida.""
 
 ##Imagens
-+Inserir imagens é o processo mais simples e intuitivo de todos: basta usar a tag *([ img ])*, seguida do caminho e nome da imagem desejada.
+Inserir imagens é o processo mais simples e intuitivo de todos: basta usar a tag "*img*", seguida do caminho e nome da imagem desejada.
 
-+Você ainda poderá adicionar uma *(legenda)* que será exibida em destaque logo abaixo da imagem. Para isso, use os caracteres "||" em seguida ao endereço da imagem e digite o texto da legenda em seguida e na mesma linha.
+Você ainda poderá adicionar uma *legenda* que será exibida em destaque logo abaixo da imagem. Para isso, use os caracteres "||" em seguida ao endereço da imagem e digite o texto da legenda em seguida e na mesma linha.
 
-[img]http://lorempixel.com/640/480/||Legenda [opcional] da Imagem.
+img|http://lorempixel.com/640/480/||Legenda [opcional] da Imagem.|img
 
 ##Parágrafos
 
-+Parágrafos começam com sinal (+) - Você pode usar formatação no meio do texto como os exemplos que se seguem. *(Esta sequência está em negrito)*, _(esta outra está em itálico)_ e -(esta tachada ou deletada)-; o restante do texto está com formatação de parágrafo normal.
-+++
-+Para pular uma linha ("<br/>") digite o sinal de 'mais' três vezes em uma linha "limpa".
+Basta acrescentar uma nova linha e a linha anterior e a nova linha serão parágrafos (<p>html</p>). Você pode usar formatação no meio do texto como os exemplos que se seguem. *Esta sequência está em negrito*, _esta outra está em itálico_ e s|esta tachada, deletada ou riscada|s; o restante do texto está com formatação de parágrafo normal.
+
+Para pular uma linha ("<br/>") basta inserir pelo menos duas linhas em branco.
 
 ##Links (HipperText)
 
-+Digite a palavra "link" entre dois colchetes, seguido do endereço do link. Usando o separador "||" é possível inserir na sequência um texto que será exibido no lugar do endereço. Veja o seguinte exemplo:
+Digite o comando "*lnk*" seguido do endereço do link e terminado com uma barra vertical ("|") seguido de "*lnk*". Usando o separador "||" é possível inserir na sequência um texto que será exibido no lugar do endereço. Veja o seguinte exemplo:
 
-+-- Baixe o [link]http://github.com/pedra/quickdoc||Quickdoc!
- diretamente do GitHub!
-+_(*Procure a sintaxe no quadro "Editor", nesta página.)_
+Exemplo: Baixe o lnk|http://github.com/pedra/quickdoc||Quickdoc!|lnk diretamente do GitHub!
+_*Procure a sintaxe no quadro "Editor", nesta página._
 
 ##Inserção de Código Malicioso
-+Se alguém digitar tags de HTML ou código javascript (e outros) maliciosos, estes serão convertidos e não terão o efeito esperado. Porém, ainda serão exibidos como neste exemplo:
 
-+<button onclick="document.location = 'http://site.contendo.virus.com'">Baixe seu prêmio</button>.
+Se alguém digitar tags de HTML ou código javascript (e outros) maliciosos, estes serão convertidos e não terão o efeito esperado. Porém, ainda serão exibidos como neste exemplo:
+
+_<button onclick="document.location = 'http://site.contendo.virus.com'">Baixe seu prêmio</button>_
+Nenhum *_botão é exibido*_ e o código javascript não funcionará.
 
 ##Facilidade de Uso
 
-+Na medida que for digitando o texto vai sendo convertido e mostrado na área de "*(preview)*". Você pode conferir o que está produzindo, corrigir em tempo real e tudo isso com as mãos no teclado - _(*(sem a necessidade do uso do mouse)*)_. Assim o foco fica apenas no texto!
+Na medida que for digitando, o texto vai sendo convertido e mostrado na área de "*preview*". Você pode conferir o que está produzindo, corrigindo em tempo real e tudo isso com as mãos no teclado - _*sem a necessidade do uso do mouse*_. Assim o foco fica apenas no texto!
+Por exemplo, se você quiser fixar (ou mostrar) o EDITOR, use as teclas *Ctrl+1*, para fixar o PREVIEW use *Ctrl+2*, para mostrar (e esconder) o MENU use *Ctrl+M* e finalmente para selecionar algum ítem do MENU, verifique as teclas de controle sinalizadas nos ítens do próprio MENU.
+_*Quando o mouse está sobre um dos campos, EDITOR e PREVIEW, o campo sob o mouse será fixado prioritáriamente - verifique._
 
 ##Venha para a Equipe!
 
-+Se você gostou da idéia e quer fazer parte do desenvolvimento destas e futuras "*(features)*", acesse o GitHub do _(*( [link]http://github.com/pedra/quickdoc||Quickdoc
- )*)_ e veja o que foi criado até agora.
+Se você gostou da idéia e quer fazer parte do desenvolvimento destas e futuras "*features*", acesse o GitHub do _*lnk|http://github.com/pedra/quickdoc||Quickdoc|lnk*_ e veja o que foi criado até agora.
 
-+Com certeza você já deve ter muitas *(idéias)*!
-+++
-+++
-+++
-+++
-*(Bill Rocha)*
-+++
-[link]http://google.com/+BillRocha
-+++
-Email: prbr@ymail.com
+Com certeza você já deve ter muitas *idéias*!
+
+
+Fale comigo no lnk|http://google.com/+BillRocha||Google Plus|lnk ou envie um lnk|prbr@ymail.com||e-mail|lnk.
+
+
+*Bill Rocha*
                 </textarea>
             </div> <!-- end txted -->
-
-            <div class="preview">
-                <div id="preview"></div>
-            </div>
-
+            <div class="preview" id="c2">
+            <h3 class="titulo" id="t2">PREVIEW</h3>
+            <div id="preview"></div></div>
         </div> <!-- end container -->
-
-        <script src="qed.js"></script>
     </body>
 </html>
