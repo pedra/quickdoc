@@ -1,5 +1,7 @@
-# quickdoc
+#Quickdoc
 Quick web page editor
+
+See an example in http://172.93.111.86/quickdoc/ or http://qdoc.tk 
 
 
 ##Start
